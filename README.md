@@ -1,2 +1,2 @@
-# promotions-js
-Challenge filter with Javascript
+# cars-filter-js
+Challenge to filter elements with Javascript
