@@ -4,7 +4,7 @@ const cars_mock = [
   {
     name: "Toyota Corolla",
     model: "Xei Cvt",
-    price: 20000, // USD
+    price: 20000,
     year: 2022,
     km: 60000,
     locality: "La Falda",
@@ -15,101 +15,98 @@ const cars_mock = [
   {
     name: "Fiat Punto",
     model: "Elx 1.4 5p",
-    price: 6300, // USD
+    price: 6300,
     year: 2009,
     km: 162845,
     locality: "Saavedra",
     province: "CABA",
-    imageUrl:
-      "https://firebasestorage.googleapis.com/v0/b/autoprecios-f936b.appspot.com/o/cars%2Ftemp_1763139842261_mzvubkhsy%2Fmeli_0_1763139842733.webp?alt=media&token=a8c5f1b2-11a3-424a-b5a8-5d2f703abc1e",
+    imageUrl: "https://http2.mlstatic.com/D_888742-MLA96060484437_102025-C.jpg",
   },
   {
     name: "Volkswagen Bora",
     model: "2.0 Trendline 115cv Manual",
-    price: 7990, // USD
+    price: 7990,
     year: 2013,
     km: 123000,
     locality: "Barracas",
     province: "CABA",
-    imageUrl:
-      "https://firebasestorage.googleapis.com/v0/b/autoprecios-f936b.appspot.com/o/cars%2Ftemp_1763139842262_mzvubkhsz%2Fmeli_0_1763139842734.webp?alt=media&token=3e9b1d0c-6a1e-4c7b-8d0f-1a3b4e5f6g7h",
+    imageUrl: "https://http2.mlstatic.com/D_959112-MLA88885178223_072025-C.jpg",
   },
   {
     name: "Audi A1",
     model: "1.4 Tfsi S Line S Tronic 185 Cv",
-    price: 20000, // USD
+    price: 20000,
     year: 2013,
     km: 120000,
     locality: "Loma Verde",
     province: "Buenos Aires",
     imageUrl:
-      "https://firebasestorage.googleapis.com/v0/b/autoprecios-f936b.appspot.com/o/cars%2Ftemp_1763139842263_mzvubkhsA%2Fmeli_0_1763139842735.webp?alt=media&token=8f7e6d5c-4b3a-2c1d-9e8c-7b6a5d4c3b2a",
+      "https://http2.mlstatic.com/D_NQ_NP_702545-MLA95981816572_102025-O.webp",
   },
   {
     name: "Chevrolet Tracker",
     model: "Ltz Awd",
-    price: 14500, // USD
+    price: 14500,
     year: 2017,
     km: 86000,
     locality: "Villa Devoto",
     province: "CABA",
     imageUrl:
-      "https://firebasestorage.googleapis.com/v0/b/autoprecios-f936b.appspot.com/o/cars%2Ftemp_1763139842264_mzvubkhsB%2Fmeli_0_1763139842736.webp?alt=media&token=1c2d3e4f-5g6h-7i8j-9k0l-1m2n3o4p5q6r",
+      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSpTkK9MhG2AWb-hKJ81OxWpCiPTQ6eND_YQQ&s",
   },
   {
     name: "Volkswagen Golf",
     model: "Gti",
-    price: 35000, // USD
+    price: 35000,
     year: 2018,
     km: 73000,
     locality: "Salta",
     province: "Salta",
     imageUrl:
-      "https://firebasestorage.googleapis.com/v0/b/autoprecios-f936b.appspot.com/o/cars%2Ftemp_1763139842265_mzvubkhsC%2Fmeli_0_1763139842737.webp?alt=media&token=2a3b4c5d-6e7f-8g9h-0i1j-2k3l4m5n6o7p",
+      "https://media.drive.com.au/obj/tx_q:50,rs:auto:1920:1080:1/caradvice/private/a99942be85e2cf450127997e2dfd8a81",
   },
   {
     name: "Jeep Compass",
     model: "Limited Plus",
-    price: 40500000, // ARS (Valor numérico alto para simular precio en pesos)
+    price: 27458,
     year: 2021,
     km: 70200,
     locality: "Córdoba",
     province: "Córdoba",
     imageUrl:
-      "https://firebasestorage.googleapis.com/v0/b/autoprecios-f936b.appspot.com/o/cars%2Ftemp_1763139842266_mzvubkhsD%2Fmeli_0_1763139842738.webp?alt=media&token=3c4d5e6f-7g8h-9i0j-1k2l-3m4n5o6p7q8r",
+      "https://firebasestorage.googleapis.com/v0/b/autoprecios-f936b.appspot.com/o/cars%2FyrGRfVx3IHI2hp3AL7sv%2F516a4296-626d-4a87-8262-c04482079eb4_1763730324467.webp?alt=media&token=f16e459e-676d-4936-965f-110b713ad110",
   },
   {
     name: "Fiat Toro",
     model: "Ranch 2.0 16v Multijet 4x4 At9",
-    price: 23000, // USD
+    price: 23000,
     year: 2020,
     km: 66000,
     locality: "San Salvador de Jujuy",
     province: "Jujuy",
-    imageUrl:
-      "https://firebasestorage.googleapis.com/v0/b/autoprecios-f936b.appspot.com/o/cars%2Ftemp_1763139842267_mzvubkhsE%2Fmeli_0_1763139842739.webp?alt=media&token=4d5e6f7a-8b9c-0d1e-2f3g-4h5i6j7k8l9m",
+    imageUrl: "https://i.ytimg.com/vi/XwxcqlqRsUg/maxresdefault.jpg",
   },
   {
     name: "Chevrolet Sonic",
     model: "Ltz 5p At",
-    price: 8500, // USD
+    price: 8500,
     year: 2013,
     km: 80000,
     locality: "Caballito",
     province: "CABA",
     imageUrl:
-      "https://firebasestorage.googleapis.com/v0/b/autoprecios-f936b.appspot.com/o/cars%2Ftemp_1763139842268_mzvubkhsF%2Fmeli_0_1763139842740.webp?alt=media&token=5e6f7a8b-9c0d-1e2f-3g4h-5i6j7k8l9m0n",
+      "https://cdncla.lavoz.com.ar/files/avisos/aviso_auto/aviso-auto-chevrolet-sonic-4ebd8d75-0cee-48c8-83fc-1fcbab727d74-249.webp",
   },
   {
     name: "Chevrolet Vectra",
     model: "Next Edition Cd 2.4 16v 4p At",
-    price: 8700, // USD
+    price: 8700,
     year: 2010,
     km: 97000,
     locality: "CABA",
     province: "CABA",
     imageUrl:
-      "https://firebasestorage.googleapis.com/v0/b/autoprecios-f936b.appspot.com/o/cars%2Ftemp_1763139842269_mzvubkhsG%2Fmeli_0_1763139842741.webp?alt=media&token=6f7a8b9c-0d1e-2f3g-4h5i-6j7k8l9m0n1p",
+      "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/Chevrolet_Vectra_2.4_CD_2010_%2814439978435%29.jpg/1024px-Chevrolet_Vectra_2.4_CD_2010_%2814439978435%29.jpg",
   },
   {
     name: "Chevrolet Aveo",
@@ -120,61 +117,124 @@ const cars_mock = [
     locality: "Monserrat",
     province: "CABA",
     imageUrl:
-      "https://firebasestorage.googleapis.com/v0/b/autoprecios-f936b.appspot.com/o/cars%2Ftemp_1763139842270_mzvubkhsH%2Fmeli_0_1763139842742.webp?alt=media&token=7a8b9c0d-1e2f-3g4h-5i6j-7k8l9m0n1p2q",
+      "https://acroadtrip.blob.core.windows.net/publicaciones-imagenes/Small/chevrolet/aveo/ar/RT_PU_95b8f687e7ca4c9e9fd4c2ada4d2f98d.webp",
   },
   {
     name: "Ford Fiesta",
     model: "Titanium 5p Mt",
-    price: 11200, // USD
+    price: 11200,
     year: 2013,
     km: 94500,
     locality: "CABA",
     province: "CABA",
     imageUrl:
-      "https://firebasestorage.googleapis.com/v0/b/autoprecios-f936b.appspot.com/o/cars%2Ftemp_1763139842271_mzvubkhsI%2Fmeli_0_1763139842743.webp?alt=media&token=8b9c0d1e-2f3g-4h5i-6j7k-8l9m0n1p2q3r",
+      "https://http2.mlstatic.com/D_NQ_NP_642779-MLA83304962454_042025-O.webp",
   },
   {
     name: "Dodge Journey",
     model: "2.4 Sxt",
-    price: 20999, // USD
+    price: 20999,
     year: 2018,
     km: 122000,
     locality: "San Isidro",
     province: "Buenos Aires",
     imageUrl:
-      "https://firebasestorage.googleapis.com/v0/b/autoprecios-f936b.appspot.com/o/cars%2Ftemp_1763139842272_mzvubkhsJ%2Fmeli_0_1763139842744.webp?alt=media&token=9c0d1e2f-3g4h-5i6j-7k8l-9m0n1p2q3r4s",
+      "https://cdncla.lavoz.com.ar/files/avisos/aviso_auto/aviso-auto-dodge-journey-c3ec2922-81ed-4b11-a1c3-9ec1b9d8300c-105.webp",
   },
   {
     name: "Volkswagen Up!",
     model: "Take",
-    price: 10500, // USD
+    price: 10500,
     year: 2019,
     km: 88000,
     locality: "Olivos",
     province: "Buenos Aires",
     imageUrl:
-      "https://firebasestorage.googleapis.com/v0/b/autoprecios-f936b.appspot.com/o/cars%2Ftemp_1763139842273_mzvubkhsK%2Fmeli_0_1763139842745.webp?alt=media&token=0d1e2f3g-4h5i-6j7k-8l9m-0n1p2q3r4s5t",
+      "https://cuyomotor.com.ar/wp-content/uploads/2018/04/Vw-up-2018-1.jpg",
   },
   {
     name: "Peugeot 408",
     model: "Sport 1.6 Thp",
-    price: 9000, // USD
+    price: 9000,
     year: 2012,
     km: 140000,
     locality: "Mataderos",
     province: "CABA",
     imageUrl:
-      "https://firebasestorage.googleapis.com/v0/b/autoprecios-f936b.appspot.com/o/cars%2Ftemp_1763139842274_mzvubkhsL%2Fmeli_0_1763139842746.webp?alt=media&token=1e2f3g4h-5i6j-7k8l-9m0n-1p2q3r4s5t6u",
+      "https://cdncla.lavoz.com.ar/files/avisos/aviso_auto/aviso-auto--14283762.webp",
   },
 ];
 
+// Container element
+const carsContainerSection = document.querySelector("#carsContainer");
 
-document.addEventListener('DOMContentLoaded', () => {
-  console.log(cars_mock);
-  const carsContainerSection = document.querySelector('#carsContainer')
-  const cardSummaryCar = document.createElement('li')
-  cardSummaryCar.classList.add('p-3')
+document.addEventListener("DOMContentLoaded", () => {
+  showCars();
+});
 
-  
+function showCars() {
+  // Guard if container is not found
+  if (!carsContainerSection) {
+    console.error('Container element "#carsContainer" not found');
+    return;
+  }
 
-})
+  // Apply layout classes once to the container
+  carsContainerSection.classList.add(
+    "grid",
+    "grid-cols-1",
+    "sm:grid-cols-2",
+    "md:grid-cols-3",
+    "lg:grid-cols-4",
+    "xl:grid-cols-5",
+    "gap-4",
+    "list-none",
+    "p-0",
+    "m-0"
+  );
+
+  for (const car of cars_mock) {
+    // Create atoms elements for card
+    const { imageUrl, km, locality, province, model, name, price, year } = car;
+
+    // Create fresh elements for each car (do not reuse)
+    const cardSummaryCar = document.createElement("li");
+    const cardTitleCar = document.createElement("span");
+    const cardModelCar = document.createElement("span");
+    const cardPriceCar = document.createElement("span");
+    const cardYearCar = document.createElement("span");
+    const cardKmCar = document.createElement("span");
+    const cardLocalityCar = document.createElement("span");
+    const cardImageCar = document.createElement("img");
+
+    // Add content in atoms elements
+    cardTitleCar.textContent = name;
+    cardModelCar.textContent = model;
+    cardPriceCar.textContent = price;
+    cardYearCar.textContent = year;
+    cardKmCar.textContent = km;
+    cardLocalityCar.textContent = `${locality}, ${province}`;
+    cardImageCar.src = imageUrl;
+    cardImageCar.alt = `${name} ${model}`;
+
+    // Add styles to card element
+    cardSummaryCar.classList.add(
+      "pb-2",
+      "border-slate-300",
+      "border-1",
+      "rounded-md",
+      "flex",
+      "flex-col",
+      "gap-2"
+    );
+
+    // Add atoms elements to card
+    cardSummaryCar.appendChild(cardImageCar);
+    cardSummaryCar.appendChild(cardTitleCar);
+    cardSummaryCar.appendChild(cardModelCar);
+    cardSummaryCar.appendChild(cardYearCar);
+    cardSummaryCar.appendChild(cardKmCar);
+    cardSummaryCar.appendChild(cardLocalityCar);
+    carsContainerSection.appendChild(cardSummaryCar);
+  }
+}
