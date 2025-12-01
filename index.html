@@ -20,15 +20,26 @@
     </div>
   </header>
   <main class="max-w-7xl px-4 py-6">
-    <section id="filters" class="flex flex-col gap-4">
+    <section id="filters" class="flex flex-col gap-4 mb-6">
       <h2 class="text-xl font-semibold">Filtros</h2>
-      <div>
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+
+        <label for="brand" class="flex flex-col">
+          Marca
+        <select name="brand" id="brand" class="rounded-sm border-zinc-300 border-1 py-2">
+        </select>
+        </label>
+
+        <label for="carYear" class="flex flex-col">
+          Año
+        <input name="carYear" id="carYear" class="rounded-sm border-zinc-300 border-1 px-1 py-2 focus:border-2 active:border-2 focus-visible:border-zinc-300" maxlength="4" />
+        </label>
 
       </div>
     </section>
     <section>
+      <h2 class="text-xl font-semibold">Autos</h2>
       <ul id="carsContainer"></ul>
-
     </section>
   </main>
 </body>

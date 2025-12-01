@@ -1,6 +1,18 @@
 // Mock data
 
-const cars_mock = [
+const CARS_BRAND_MOCK = [
+  "Toyota",
+  "Fiat",
+  "Volkswagen",
+  "Audi",
+  "Chevrolet",
+  "Jeep",
+  "Ford",
+  "Dodge",
+  "Peugeot",
+];
+
+const CARS_MOCK = [
   {
     name: "Toyota Corolla",
     model: "Xei Cvt",
@@ -165,12 +177,26 @@ const cars_mock = [
   },
 ];
 
-// Container element
+// Constants
 const carsContainerSection = document.querySelector("#carsContainer");
+const brandSelect = document.querySelector("#brand");
+const yearInput = document.querySelector("#carYear");
+const currentYear = new Date().getFullYear();
+const minYearCar = 2000;
 
 document.addEventListener("DOMContentLoaded", () => {
   showCars();
+  showBrandOptions();
 });
+
+yearInput.addEventListener("input", validate);
+
+function formattedPrice(price) {
+  return new Intl.NumberFormat("es-AR", {
+    style: "currency",
+    currency: "USD",
+  }).format(price);
+}
 
 function showCars() {
   // Guard if container is not found
@@ -193,14 +219,14 @@ function showCars() {
     "m-0"
   );
 
-  for (const car of cars_mock) {
+  for (const car of CARS_MOCK) {
     // Create atoms elements for card
     const { imageUrl, km, locality, province, model, name, price, year } = car;
 
     // Create fresh elements for each car (do not reuse)
     const cardSummaryCar = document.createElement("li");
+
     const cardTitleCar = document.createElement("span");
-    const cardModelCar = document.createElement("span");
     const cardPriceCar = document.createElement("span");
     const cardYearCar = document.createElement("span");
     const cardKmCar = document.createElement("span");
@@ -208,11 +234,10 @@ function showCars() {
     const cardImageCar = document.createElement("img");
 
     // Add content in atoms elements
-    cardTitleCar.textContent = name;
-    cardModelCar.textContent = model;
-    cardPriceCar.textContent = price;
+    cardTitleCar.textContent = `${name} ${model}`;
+    cardPriceCar.textContent = formattedPrice(price);
     cardYearCar.textContent = year;
-    cardKmCar.textContent = km;
+    cardKmCar.textContent = `km: ${km}`;
     cardLocalityCar.textContent = `${locality}, ${province}`;
     cardImageCar.src = imageUrl;
     cardImageCar.alt = `${name} ${model}`;
@@ -231,10 +256,82 @@ function showCars() {
     // Add atoms elements to card
     cardSummaryCar.appendChild(cardImageCar);
     cardSummaryCar.appendChild(cardTitleCar);
-    cardSummaryCar.appendChild(cardModelCar);
+    cardSummaryCar.appendChild(cardPriceCar);
     cardSummaryCar.appendChild(cardYearCar);
     cardSummaryCar.appendChild(cardKmCar);
     cardSummaryCar.appendChild(cardLocalityCar);
     carsContainerSection.appendChild(cardSummaryCar);
   }
+}
+
+function showBrandOptions() {
+  for (const brand of CARS_BRAND_MOCK) {
+    const optionBrand = document.createElement("option");
+    optionBrand.value = brand;
+    optionBrand.textContent = brand;
+    brandSelect.append(optionBrand);
+  }
+}
+
+
+function validate(event) {
+  clearAlert(event.target.parentElement);
+  fieldsRegex(event.target.value, event.target.id, event.target.parentElement);
+
+  //asignar los valores
+  //checkouFormData[event.target.id] = event.target.value.trim().toLowerCase();
+}
+
+function showAlert(message, elementRef) {
+  clearAlert(elementRef);
+
+  const error = document.createElement("p");
+  error.textContent = message;
+  error.classList.add("py-2", "text-red-300", "font-semibold");
+  // Agregar el error abajo de cada input
+  elementRef.appendChild(error);
+}
+
+function clearAlert(elementRef) {
+  const supportingTextError = elementRef.querySelector(".text-red-300");
+  if (supportingTextError) {
+    supportingTextError.remove();
+  }
+}
+
+const VALIDATION_RULES = {
+  carYear: {
+    rules: [
+      {
+        test: (value) => /^\d{4}$/.test(value),
+        message: "El año debe tener 4 números",
+      },
+      {
+        test: (value) => Number(value) < currentYear,
+        message: "El año debe ser menor al año actual",
+      },
+      {
+        test: (value) => Number(value) > minYearCar,
+        message: "El año debe ser mayor al año 2000",
+      },
+    ],
+  },
+};
+
+function fieldsRegex(value, id, elementRef) {
+  if (!VALIDATION_RULES[id]) return true; // Sin reglas definidas = válido
+
+  if (value === '' || value === undefined) return true
+
+  const rules = VALIDATION_RULES[id].rules;
+
+  for (const ruleYear of rules) {
+    if (!ruleYear.test(value)) {
+      showAlert(ruleYear.message, elementRef);
+      return false;
+    }
+  }
+
+  // Si pasó todas las validaciones agregar al objeto de filtros
+  return true;
 }
