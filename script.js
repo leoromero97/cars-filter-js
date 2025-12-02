@@ -212,7 +212,7 @@ const carsFiltered = {
 };
 
 document.addEventListener("DOMContentLoaded", () => {
-  showCars();
+  showCars(CARS_MOCK);
   showBrandOptions();
 });
 
@@ -220,11 +220,11 @@ brandSelect.addEventListener("change", (e) => {
   carsFiltered.carBrand = e.target.value;
   getCarsFiltered();
 });
-yearInput.addEventListener("input", validate);
-minPriceInput.addEventListener("input", validate);
-maxPriceInput.addEventListener("input", validate);
-minKmInput.addEventListener("input", validate);
-maxKmInput.addEventListener("input", validate);
+yearInput.addEventListener("blur", validate);
+minPriceInput.addEventListener("blur", validate);
+maxPriceInput.addEventListener("blur", validate);
+minKmInput.addEventListener("blur", validate);
+maxKmInput.addEventListener("blur", validate);
 
 function formattedPrice(price) {
   return new Intl.NumberFormat("es-AR", {
@@ -233,7 +233,7 @@ function formattedPrice(price) {
   }).format(price);
 }
 
-function showCars() {
+function showCars(carsArray) {
   // Guard if container is not found
   if (!carsContainerSection) {
     console.error('Container element "#carsContainer" not found');
@@ -254,7 +254,8 @@ function showCars() {
     "m-0"
   );
 
-  for (const car of CARS_MOCK) {
+  clearResultsContainerHtml();
+  for (const car of carsArray) {
     // Create atoms elements for card
     const { imageUrl, km, locality, province, model, name, price, year } = car;
 
@@ -299,6 +300,12 @@ function showCars() {
   }
 }
 
+function clearResultsContainerHtml() {
+  while (carsContainerSection.firstChild) {
+    carsContainerSection.removeChild(carsContainerSection.firstChild);
+  }
+}
+
 function showBrandOptions() {
   for (const brand of CARS_BRAND_MOCK) {
     const optionBrand = document.createElement("option");
@@ -313,6 +320,7 @@ function validate(event) {
   fieldsRegex(event.target.value, event.target.id, event.target.parentElement);
 
   carsFiltered[event.target.id] = event.target.value.trim().toLowerCase();
+  getCarsFiltered();
 }
 
 function showAlert(message, elementRef) {
@@ -405,15 +413,25 @@ function fieldsRegex(value, id, elementRef) {
 }
 
 function getCarsFiltered() {
-  const carsResult = CARS_MOCK.filter(filterBrands);
+  const carsResult = CARS_MOCK.filter(filterBrands).filter(filterYear);
 
-  console.log(carsResult);
+  //console.log(carsResult);
+  showCars(carsResult);
 }
 
 function filterBrands(car) {
   const { carBrand } = carsFiltered;
   if (carBrand) {
-    return car?.brand == carBrand;
+    return car?.brand === carBrand;
+  }
+
+  return car;
+}
+
+function filterYear(car) {
+  const { carYear } = carsFiltered;
+  if (carYear) {
+    return car.year.toString() === carYear;
   }
 
   return car;
