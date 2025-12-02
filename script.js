@@ -16,6 +16,7 @@ const CARS_MOCK = [
   {
     name: "Toyota Corolla",
     model: "Xei Cvt",
+    brand: "Toyota",
     price: 20000,
     year: 2022,
     km: 60000,
@@ -27,6 +28,7 @@ const CARS_MOCK = [
   {
     name: "Fiat Punto",
     model: "Elx 1.4 5p",
+    brand: "Fiat",
     price: 6300,
     year: 2009,
     km: 162845,
@@ -37,6 +39,7 @@ const CARS_MOCK = [
   {
     name: "Volkswagen Bora",
     model: "2.0 Trendline 115cv Manual",
+    brand: "Volkswagen",
     price: 7990,
     year: 2013,
     km: 123000,
@@ -47,6 +50,7 @@ const CARS_MOCK = [
   {
     name: "Audi A1",
     model: "1.4 Tfsi S Line S Tronic 185 Cv",
+    brand: "Audi",
     price: 20000,
     year: 2013,
     km: 120000,
@@ -58,6 +62,7 @@ const CARS_MOCK = [
   {
     name: "Chevrolet Tracker",
     model: "Ltz Awd",
+    brand: "Chevrolet",
     price: 14500,
     year: 2017,
     km: 86000,
@@ -69,6 +74,7 @@ const CARS_MOCK = [
   {
     name: "Volkswagen Golf",
     model: "Gti",
+    brand: "Volkswagen",
     price: 35000,
     year: 2018,
     km: 73000,
@@ -80,6 +86,7 @@ const CARS_MOCK = [
   {
     name: "Jeep Compass",
     model: "Limited Plus",
+    brand: "Jeep",
     price: 27458,
     year: 2021,
     km: 70200,
@@ -91,6 +98,7 @@ const CARS_MOCK = [
   {
     name: "Fiat Toro",
     model: "Ranch 2.0 16v Multijet 4x4 At9",
+    brand: "Fiat",
     price: 23000,
     year: 2020,
     km: 66000,
@@ -101,6 +109,7 @@ const CARS_MOCK = [
   {
     name: "Chevrolet Sonic",
     model: "Ltz 5p At",
+    brand: "Chevrolet",
     price: 8500,
     year: 2013,
     km: 80000,
@@ -112,6 +121,7 @@ const CARS_MOCK = [
   {
     name: "Chevrolet Vectra",
     model: "Next Edition Cd 2.4 16v 4p At",
+    brand: "Chevrolet",
     price: 8700,
     year: 2010,
     km: 97000,
@@ -123,6 +133,7 @@ const CARS_MOCK = [
   {
     name: "Chevrolet Aveo",
     model: "Lt 4p",
+    brand: "Chevrolet",
     price: 12000000, // ARS
     year: 2012,
     km: 82000,
@@ -134,6 +145,7 @@ const CARS_MOCK = [
   {
     name: "Ford Fiesta",
     model: "Titanium 5p Mt",
+    brand: "Ford",
     price: 11200,
     year: 2013,
     km: 94500,
@@ -145,6 +157,7 @@ const CARS_MOCK = [
   {
     name: "Dodge Journey",
     model: "2.4 Sxt",
+    brand: "Dodge",
     price: 20999,
     year: 2018,
     km: 122000,
@@ -156,6 +169,7 @@ const CARS_MOCK = [
   {
     name: "Volkswagen Up!",
     model: "Take",
+    brand: "Volkswagen",
     price: 10500,
     year: 2019,
     km: 88000,
@@ -167,6 +181,7 @@ const CARS_MOCK = [
   {
     name: "Peugeot 408",
     model: "Sport 1.6 Thp",
+    brand: "Peugeot",
     price: 9000,
     year: 2012,
     km: 140000,
@@ -179,17 +194,37 @@ const CARS_MOCK = [
 
 // Constants
 const carsContainerSection = document.querySelector("#carsContainer");
-const brandSelect = document.querySelector("#brand");
+const brandSelect = document.querySelector("#carBrand");
 const yearInput = document.querySelector("#carYear");
 const currentYear = new Date().getFullYear();
 const minYearCar = 2000;
+const minPriceInput = document.querySelector("#carMinPrice");
+const maxPriceInput = document.querySelector("#carMaxPrice");
+const minKmInput = document.querySelector("#carMinKm");
+const maxKmInput = document.querySelector("#carMaxKm");
+const carsFiltered = {
+  carBrand: "",
+  carYear: "",
+  carMinPrice: "",
+  carMaxPrice: "",
+  carMinKm: "",
+  carMaxKm: "",
+};
 
 document.addEventListener("DOMContentLoaded", () => {
   showCars();
   showBrandOptions();
 });
 
+brandSelect.addEventListener("change", (e) => {
+  carsFiltered.carBrand = e.target.value;
+  getCarsFiltered();
+});
 yearInput.addEventListener("input", validate);
+minPriceInput.addEventListener("input", validate);
+maxPriceInput.addEventListener("input", validate);
+minKmInput.addEventListener("input", validate);
+maxKmInput.addEventListener("input", validate);
 
 function formattedPrice(price) {
   return new Intl.NumberFormat("es-AR", {
@@ -273,18 +308,15 @@ function showBrandOptions() {
   }
 }
 
-
 function validate(event) {
   clearAlert(event.target.parentElement);
   fieldsRegex(event.target.value, event.target.id, event.target.parentElement);
 
-  //asignar los valores
-  //checkouFormData[event.target.id] = event.target.value.trim().toLowerCase();
+  carsFiltered[event.target.id] = event.target.value.trim().toLowerCase();
 }
 
 function showAlert(message, elementRef) {
   clearAlert(elementRef);
-
   const error = document.createElement("p");
   error.textContent = message;
   error.classList.add("py-2", "text-red-300", "font-semibold");
@@ -315,13 +347,49 @@ const VALIDATION_RULES = {
         message: "El año debe ser mayor al año 2000",
       },
     ],
+    carMinPrice: {
+      rules: [
+        {
+          test: (value) => /^\d+$/.test(String(value).trim()),
+          message: "El precio mínimo debe ser un número",
+        },
+      ],
+    },
+    carMaxPrice: {
+      rules: [
+        {
+          test: (value) => /^\d+$/.test(String(value).trim()),
+          message: "El precio máximo debe ser un número",
+        },
+        {
+          test: (value) => Number(value) > carsFiltered.carMinPrice,
+          message: "El precio máximo debe ser mayor al precio mínimo",
+        },
+      ],
+    },
+    carMinKm: {
+      rules: [
+        {
+          test: (value) => /^\d+$/.test(String(value).trim()),
+          message: "El kilómetraje mínimo debe ser un número",
+        },
+      ],
+    },
+    carMaxKm: {
+      rules: [
+        {
+          test: (value) => Number(value) > carsFiltered.carMinKm,
+          message: "El kilómetraje máximo debe ser mayor al kilómetraje mínimo",
+        },
+      ],
+    },
   },
 };
 
 function fieldsRegex(value, id, elementRef) {
   if (!VALIDATION_RULES[id]) return true; // Sin reglas definidas = válido
 
-  if (value === '' || value === undefined) return true
+  if (value === "" || value === undefined) return true;
 
   const rules = VALIDATION_RULES[id].rules;
 
@@ -334,4 +402,19 @@ function fieldsRegex(value, id, elementRef) {
 
   // Si pasó todas las validaciones agregar al objeto de filtros
   return true;
+}
+
+function getCarsFiltered() {
+  const carsResult = CARS_MOCK.filter(filterBrands);
+
+  console.log(carsResult);
+}
+
+function filterBrands(car) {
+  const { carBrand } = carsFiltered;
+  if (carBrand) {
+    return car?.brand == carBrand;
+  }
+
+  return car;
 }
