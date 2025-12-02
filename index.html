@@ -9,31 +9,71 @@
 </head>
 
 <body class="min-h-screen bg-zinc-900 text-zinc-200">
-  <header class="min-h-[500px] w-full px-4 py-6 bg-no-repeat bg-cover bg-[url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-bottom-right">
-    <div class="gap-4 md:gap-10 flex flex-col items-start rounded-md py-6 px-3 bg-white/30 backdrop-invert backdrop-opacity-10">
-      <h1 class="font-semibold text-2xl md:text-4xl text-zinc-800">¿Buscas cambiar tu auto? <span class="text-zinc-900">No esperes
+  <header
+    class="min-h-[500px] w-full px-4 py-6 bg-no-repeat bg-cover bg-[url('https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80&w=1470&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D')] bg-bottom-right">
+    <div
+      class="gap-4 md:gap-10 flex flex-col items-start rounded-md py-6 px-3 bg-white/30 backdrop-invert backdrop-opacity-10">
+      <h1 class="font-semibold text-2xl md:text-4xl text-zinc-800">¿Buscas cambiar tu auto? <span
+          class="text-zinc-900">No esperes
           más</span></h1>
-      <a href="#carsContainer"
+      <a href="#filters"
         class="rounded-md p-2 md:px-3 font-semibold text-sm md:text-lg bg-zinc-800 text-zinc-100 hover:bg-zinc-700 active:bg-zinc-900 cursor-pointer text-center">
         Ver autos
-      </a href="#carsContainer">
+      </a>
     </div>
   </header>
   <main class="max-w-7xl px-4 py-6">
-    <section id="filters" class="flex flex-col gap-4 mb-6">
+    <section id="filters" class="flex flex-col gap-4 my-6">
       <h2 class="text-xl font-semibold">Filtros</h2>
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
 
-        <label for="brand" class="flex flex-col">
+        <label for="carBrand" class="flex flex-col">
           Marca
-        <select name="brand" id="brand" class="rounded-sm border-zinc-300 border-1 py-2">
-        </select>
+          <select name="carBrand" id="carBrand" class="rounded-sm border-zinc-300 border-1 py-2">
+          </select>
         </label>
 
         <label for="carYear" class="flex flex-col">
           Año
-        <input name="carYear" id="carYear" class="rounded-sm border-zinc-300 border-1 px-1 py-2 focus:border-2 active:border-2 focus-visible:border-zinc-300" maxlength="4" />
+          <input name="carYear" id="carYear"
+            class="rounded-sm border-zinc-300 border-1 px-1 py-2 focus:border-2 active:border-2 focus-visible:border-zinc-300"
+            maxlength="4" placeholder="2025" />
         </label>
+        <div class="flex flex-col">
+          <span class="font-semibold">Precio en dólar:</span>
+          <fieldset class="flex gap-2 w-full">
+            <label for="carMinPrice" class="flex flex-col">
+              Desde
+              <input name="carMinPrice" id="carMinPrice"
+                class="rounded-sm border-zinc-300 border-1 px-1 py-2 focus:border-2 active:border-2 focus-visible:border-zinc-300 w-full"
+                maxlength="40" placeholder="Mínimo" type="number" />
+            </label>
+            <label for="carMaxPrice" class="flex flex-col">
+              Hasta
+              <input name="carMaxPrice" id="carMaxPrice"
+                class="rounded-sm border-zinc-300 border-1 px-1 py-2 focus:border-2 active:border-2 focus-visible:border-zinc-300 w-full"
+                maxlength="40" placeholder="Máximo" type="number" />
+            </label>
+          </fieldset>
+        </div>
+
+        <div class="flex flex-col">
+          <span class="font-semibold">Kilometraje:</span>
+          <fieldset class="flex gap-2 w-full">
+            <label for="carMinKm" class="flex flex-col">
+              Desde
+              <input name="carMinKm" id="carMinKm"
+                class="rounded-sm border-zinc-300 border-1 px-1 py-2 focus:border-2 active:border-2 focus-visible:border-zinc-300 w-full"
+                maxlength="20" placeholder="Mínimo" type="number" />
+            </label>
+            <label for="carMaxKm" class="flex flex-col">
+              Hasta
+              <input name="carMaxKm" id="carMaxKm"
+                class="rounded-sm border-zinc-300 border-1 px-1 py-2 focus:border-2 active:border-2 focus-visible:border-zinc-300 w-full"
+                maxlength="20" placeholder="Máximo" type="number" />
+            </label>
+          </fieldset>
+        </div>
 
       </div>
     </section>
